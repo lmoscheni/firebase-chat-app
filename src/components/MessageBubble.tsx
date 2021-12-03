@@ -30,8 +30,6 @@ export default function MessageBubble(props: MessageBubbleProps): JSX.Element {
     deleteDoc(documentRef.ref);
   };
 
-  console.log(typeof props.documentRef);
-
   const isTheSameUser = user?.uid === props.message.from.id;
 
   return (

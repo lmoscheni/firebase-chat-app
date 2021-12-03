@@ -52,8 +52,6 @@ export default function ChatPage(_props: ChatPageProps): JSX.Element {
     );
   }
 
-  console.log(value?.docs[0].data());
-
   return (
     <div className="h-full">
       {!submissionError ? null : (
