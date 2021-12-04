@@ -11,7 +11,7 @@ function App(): JSX.Element {
   return (
     <div className="bg-gray-100 h-screen overflow-hidden">
       <Navbar />
-      <div className="px-10 py-5 h-full">
+      <div className="h-full px-3 py-3 sm:px-10 sm:py-5">
         {user ? <ChatPage /> : <HomePage />}
       </div>
     </div>

@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { authenticator } from "../App/firebase";
 
+import { ChatAlt2Icon } from "@heroicons/react/solid";
+
 type NavbarProps = {};
 
 function Navbar(_props: NavbarProps): JSX.Element {
@@ -10,8 +12,10 @@ function Navbar(_props: NavbarProps): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <nav className="w-full px-10 py-4 flex flex-row justify-between border-b-2">
-      <div className="font-extrabold text-blue-500 italic">firebaseChat_</div>
+    <nav className="w-full px-3 py-3 flex flex-row justify-between border-b-2 sm:px-10 sm:py-4">
+      <div className="font-extrabold italic">
+        <ChatAlt2Icon className="w-10 h-10 text-green-600" />
+      </div>
       <ul className="flex flex-row gap-10 font-semibold">
         {!user ? null : (
           <li>
@@ -27,7 +31,7 @@ function Navbar(_props: NavbarProps): JSX.Element {
                 onBlur={() => setIsOpen(false)}
               >
                 <p
-                  className="block px-4 py-2 text-xs text-gray-800 rounded-lg hover:bg-blue-500 hover:text-white"
+                  className="block px-4 py-2 text-xs text-gray-800 rounded-lg hover:bg-green-300 hover:text-white"
                   onClick={() => {
                     setIsOpen(!isOpen);
                     signOut(authenticator);

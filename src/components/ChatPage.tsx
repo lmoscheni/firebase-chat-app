@@ -7,7 +7,11 @@ import MessageBubble from "./MessageBubble";
 import ErrorMessage from "./Error";
 
 import { Message } from "../models/Message";
-import { addDoc, DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
+import {
+  addDoc,
+  DocumentData,
+  QueryDocumentSnapshot,
+} from "firebase/firestore";
 import { SyntheticEvent, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -75,7 +79,7 @@ export default function ChatPage(_props: ChatPageProps): JSX.Element {
         </div>
       )}
       <div className="h-5/6">
-        <div className="h-full overflow-auto p-2 bg-white flex-1 rounded-md shadow-md">
+        <div className="h-full overflow-auto p-1 bg-white flex-1 rounded-md shadow-md">
           {value?.docs
             .sort(sortMessagesByDate)
             .map((doc: QueryDocumentSnapshot) => (
@@ -99,7 +103,7 @@ export default function ChatPage(_props: ChatPageProps): JSX.Element {
           }}
         />
         <button onClick={submitMessage} disabled={!content || submissionError}>
-          <ArrowCircleRightIcon className="h-9 w-9 text-green-600" />
+          <ArrowCircleRightIcon className="rounded-full h-9 w-9 text-green-600 hover:text-black hover:bg-gray-200" />
         </button>
       </div>
     </div>
