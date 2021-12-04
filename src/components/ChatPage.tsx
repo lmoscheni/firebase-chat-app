@@ -7,7 +7,7 @@ import MessageBubble from "./MessageBubble";
 import ErrorMessage from "./Error";
 
 import { Message } from "../models/Message";
-import { addDoc, QueryDocumentSnapshot } from "firebase/firestore";
+import { addDoc, DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import { SyntheticEvent, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -40,6 +40,21 @@ export default function ChatPage(_props: ChatPageProps): JSX.Element {
       });
   };
 
+  const sortMessagesByDate = (a: DocumentData, b: DocumentData) => {
+    const aTime = new Date(a.data().createdAt).getTime();
+    const bTime = new Date(b.data().createdAt).getTime();
+
+    if (aTime > bTime) {
+      return 1;
+    }
+
+    if (bTime > aTime) {
+      return -1;
+    }
+
+    return 0;
+  };
+
   if (loading) {
     return <div className="text-2xl">Getting Messages...</div>;
   }
@@ -61,12 +76,14 @@ export default function ChatPage(_props: ChatPageProps): JSX.Element {
       )}
       <div className="h-5/6">
         <div className="h-full overflow-auto p-2 bg-white flex-1 rounded-md shadow-md">
-          {value?.docs.map((doc: QueryDocumentSnapshot) => (
-            <MessageBubble
-              documentRef={doc}
-              message={{ id: doc.id, ...doc.data() } as Message}
-            />
-          ))}
+          {value?.docs
+            .sort(sortMessagesByDate)
+            .map((doc: QueryDocumentSnapshot) => (
+              <MessageBubble
+                documentRef={doc}
+                message={{ id: doc.id, ...doc.data() } as Message}
+              />
+            ))}
         </div>
       </div>
       <div className="w-full flex flex-row mt-2 bg-white rounded-md shadow-md">
