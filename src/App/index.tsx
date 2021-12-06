@@ -7,7 +7,6 @@ import Navbar from "../components/Navbar";
 
 function App(): JSX.Element {
   const [user] = useAuthState(authenticator);
-  console.log(user);
   return (
     <div className="bg-gray-100 h-screen overflow-hidden">
       <Navbar />
