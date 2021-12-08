@@ -10,6 +10,8 @@ This project use:
 
 This is a chat group coded with react and firebase.
 
+[DEMO.](https://firebase-chat-app-two.vercel.app/)
+
 ## Set UP
 To start the app you need to create a project on firebase and set in the root directory of this project a dotenv file with firebase info:
 ```
