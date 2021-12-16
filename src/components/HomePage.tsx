@@ -1,7 +1,7 @@
 import { signInWithPopup } from "firebase/auth";
-import { authenticationProvider, authenticator } from "../App/firebase";
-
 import { ChatAlt2Icon } from "@heroicons/react/solid";
+
+import { authenticationProvider, authenticator } from "../App/firebase";
 
 type HomePageProps = {};
 
